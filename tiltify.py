@@ -14,9 +14,11 @@ class TiltifyAPI:
         response = requests.get(url=self.donations_url, headers=headers)
         print(response)
         print(response.text)
+        return response.text
 
 
 if __name__ == '__main__':
     key = 'test_479c924413fe9168952891e9a36'
     tiltify = TiltifyAPI(api_key=key)
-    tiltify.get_donations()
+    test = tiltify.get_donations()
+    assert test == tiltify.get_donations()
