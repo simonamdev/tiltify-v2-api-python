@@ -23,7 +23,7 @@ Retrieve donations, with option parameters `limit`, `order_by` and/or `donation_
 
 ## Contributions
 
-If you wish to contribute - simply open a Pull Request with your changes. Here are various items which I did not add in the initial version:
+If you wish to contribute - simply open a branch from `develop` then open a Pull Request back into `develop` with your changes. Here are various items which I did not add in the initial version:
 
 * Methods to retrieve data about awards
 * Methods to retrieve data about the campaign
