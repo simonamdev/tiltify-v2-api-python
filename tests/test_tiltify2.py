@@ -1,4 +1,5 @@
 import json
+from pprint import pprint
 
 import pytest
 
@@ -82,4 +83,9 @@ class TestTiltify2Donations:
 
     def test_retrieving_all_donations_without_parameters(self):
         donations = self.tiltify.get_donations()
-        assert len(donations) == 5
+        pprint(donations)
+        # Assert number of donations present
+        assert 4 == len(donations)
+        # Assert they are ordered by ID by default
+        for i in range(4, 0):
+            assert 10000 + i == donations[i]['id']
