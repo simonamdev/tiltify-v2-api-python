@@ -2,6 +2,18 @@
 
 A wrapper for the 2nd version of the API provided by https://tiltify.com, an awesome site to combine fundraising and livestreaming.
 
+## Supported Python Versions
+
+* 3.*
+
+## Tested Versions
+
+* 3.5
+
+## Installation
+
+`pip3 install tiltify2`
+
 ## Usage
 
 Import the Tiltify object from the library of the version you wish to use.
@@ -29,6 +41,7 @@ If you wish to contribute - simply open a branch from `develop` then open a Pull
 * Methods to retrieve data about the campaign
 * Methods to order donations by values other than ID, Amount and Time Created
 * Async option
+* Setting up Travis for CI
 
 ## Credits
 
