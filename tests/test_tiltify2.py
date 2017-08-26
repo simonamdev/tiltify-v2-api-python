@@ -81,4 +81,5 @@ class TestTiltify2Donations:
         self.tiltify.__make_request = return_mock_response
 
     def test_retrieving_all_donations_without_parameters(self):
-        pass
+        donations = self.tiltify.get_donations()
+        assert len(donations) == 5
