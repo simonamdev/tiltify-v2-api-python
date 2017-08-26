@@ -98,6 +98,9 @@ class TestTiltify2Donations:
             if 'rewards' in url:
                 return mock_return['rewards']
             elif 'donations' in url:
+                if not params == {}:
+                    if params['donation_limit'] is not None:
+                        mock_return['donations'] = mock_return['donations'][:int(params['donation_limit'])]
                 return mock_return['donations']
             return mock_return
 
@@ -111,3 +114,17 @@ class TestTiltify2Donations:
         # Assert they are ordered by ID by default
         for i in range(4, 0):
             assert 10000 + i == donations[i]['id']
+
+    def test_get_donations_with_limit_1(self):
+        donations = self.tiltify.get_donations(limit=1)
+        assert 1 == len(donations)
+        assert 10004 == donations[0]['id']
+        assert 10.0 == donations[0]['amount']
+
+    def test_get_donations_with_limit_2(self):
+        donations = self.tiltify.get_donations(limit=2)
+        assert 2 == len(donations)
+        assert 10004 == donations[0]['id']
+        assert 10.0 == donations[0]['amount']
+        assert 10003 == donations[1]['id']
+        assert 100.0 == donations[1]['amount']

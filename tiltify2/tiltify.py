@@ -23,7 +23,11 @@ class Tiltify2:
             raise ValueError('Invalid API Key length of {}. API key must be 32 characters long'.format(len(self._api_key)))
 
     def get_donations(self, limit=None, order_by=None, donation_order=None):
-        data = self.make_request(url=self.donations_url)
+        params = {}
+        if params is not None:
+            if limit is not None:
+                params['donation_limit'] = limit
+        data = self.make_request(url=self.donations_url, params=params)
         return data
 
     def make_request(self, url, params=None):
