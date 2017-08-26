@@ -5,6 +5,7 @@ setup(
     version='1.0',
     packages=['tiltify2'],
     url='https://github.com/purrcat259/tiltify-v2-api-python',
+    download_url='https://github.com/purrcat259/tiltify-v2-api-python/archive/1.0.tar.gz',
     license='MIT',
     author='Simon Agius Muscat',
     author_email='simon@agius-muscat.net',
