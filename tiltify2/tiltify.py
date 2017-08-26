@@ -1,7 +1,7 @@
 import json
-
 import requests
 
+from enum import Enum
 from tiltify2.exceptions import RequestException
 
 
@@ -27,10 +27,18 @@ class Tiltify2:
         if params is not None:
             if limit is not None:
                 params['donation_limit'] = limit
-        data = self.make_request(url=self.donations_url, params=params)
+            if order_by is not None:
+                param_values = {
+                    Order.AMOUNT: 'amount',
+                    Order.CREATED_AT: 'created'
+                }
+                params['donation_order_by'] = param_values[order_by]
+            if donation_order is not None:
+                params['donation_order'] = 'desc' if donation_order == Order.DESC else 'asc'
+        data = self.__make_request(url=self.donations_url, params=params)
         return data
 
-    def make_request(self, url, params=None):
+    def __make_request(self, url, params=None):
         response = requests.get(
             url=url,
             params=params if params is not None else {},
@@ -43,3 +51,10 @@ class Tiltify2:
 
     def __get_request_headers(self):
         return {'Authorization': 'Token token={}'.format(self._api_key)}
+
+
+class Order(Enum):
+    ASC = 1
+    DESC = 2
+    AMOUNT = 'amount'
+    CREATED_AT = 'created'
