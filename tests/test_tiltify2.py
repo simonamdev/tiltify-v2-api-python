@@ -1,5 +1,6 @@
 import pytest
 
+from tiltify2.exceptions import InvalidApiKeyException
 from tiltify2.tiltify import Tiltify2, Order
 
 
@@ -12,11 +13,19 @@ class TestTiltify2Initialisation:
         with pytest.raises(ValueError):
             tiltify = Tiltify2(api_key)
 
+    def test_passing_invalid_api_key(self):
+        with pytest.raises(InvalidApiKeyException):
+            tiltify = Tiltify2('test_blablablablablablablablabla')
+            tiltify.get_donations()
+
 test_api_key = 'test_479c924413fe9168952891e9a36'
+
 
 """
 This test suite assumes that the reply from the Tiltify test API never changes
 """
+
+
 class TestTiltify2Donations:
     tiltify = None
 

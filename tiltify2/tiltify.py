@@ -2,7 +2,7 @@ import json
 import requests
 
 from enum import Enum
-from tiltify2.exceptions import RequestException
+from tiltify2.exceptions import RequestException, InvalidApiKeyException
 
 
 class Tiltify2:
@@ -45,6 +45,8 @@ class Tiltify2:
             headers=self.__get_request_headers(),
             timeout=self.__timeout
         )
+        if response.status_code == 401:
+            raise InvalidApiKeyException('Tiltify rejected the given API key: {}'.format(self._api_key))
         if not response.status_code == 200:
             raise RequestException('Unable to reach Tiltify API. Returned status code: {}'.format(response.status_code))
         return json.loads(response.text)
