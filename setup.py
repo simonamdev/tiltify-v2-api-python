@@ -10,5 +10,8 @@ setup(
     author='Simon Agius Muscat',
     author_email='simon@agius-muscat.net',
     description='A wrapper for the 2nd version of the Tiltify API',
-    keywords=['tiltify', 'api', 'v2', 'livestreaming', 'charity', 'fundraising']
+    keywords=['tiltify', 'api', 'v2', 'livestreaming', 'charity', 'fundraising'],
+    install_requires=[
+        'requests',
+    ],
 )
