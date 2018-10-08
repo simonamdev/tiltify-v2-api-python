@@ -1,1 +1,5 @@
+dist/
+tiltify2.egg-info/
+build/
 .idea/
+*.iml

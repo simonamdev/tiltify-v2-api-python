@@ -2,21 +2,33 @@
 
 A wrapper for the 2nd version of the API provided by https://tiltify.com, an awesome site to combine fundraising and livestreaming.
 
+## Supported Python Versions
+
+* 3.*
+
+## Tested Versions
+
+* 3.5
+
+## Installation
+
+`pip3 install tiltify2`
+
 ## Usage
 
-Import the Tiltify object from the library of the version you wish to use.
+Import the Tiltify2 object from the library of the version you wish to use.
 
-`from tiltify2.tiltify import Tiltify`
+`from tiltify2.tiltify import Tiltify2`
 
 Initialise an instance using your API key retrieved from [Tiltify](https://tiltify.com/). You can also state a timeout (in seconds) if you wish
 
-`tiltfy = Tiltify(api_key=my_api_key, timeout=2)`
+`tiltfy = Tiltify2(api_key=my_api_key, timeout=2)`
 
 Retrieve donations, with option parameters `limit`, `order_by` and/or `donation_order`.
 
 `from tiltify2.tiltify import Tiltify2, Order`
 
-`tiltfy = Tiltify(api_key=my_api_key, timeout=2)`
+`tiltfy = Tiltify2(api_key=my_api_key, timeout=2)`
 
 
 `five_donations_starting_from_latest_time_created = tiltify.get_donations(limit=2, donation_order=Order.DESC, order_by=Order.CREATED_AT)`
@@ -29,6 +41,7 @@ If you wish to contribute - simply open a branch from `develop` then open a Pull
 * Methods to retrieve data about the campaign
 * Methods to order donations by values other than ID, Amount and Time Created
 * Async option
+* Setting up Travis for CI
 
 ## Credits
 
